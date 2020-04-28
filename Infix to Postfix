@@ -20,7 +20,7 @@ int prec(char c)
 //to postfix expression 
 void infixToPostfix(string s) 
 { 
-	std::stack<char> st; 
+	stack<char> st; 
 	st.push('N'); 
 	int l = s.length(); 
 	string ns; 
@@ -86,4 +86,3 @@ int main()
 	}
 	return 0; 
 } 
-// This code is contributed by Gautam Singh 
