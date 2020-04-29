@@ -1,0 +1,55 @@
+// { Driver Code Starts
+#include<bits/stdc++.h>
+using namespace std;
+ 
+
+
+
+int findMaxDiff(int [], int n);
+
+int main()
+{
+   int t;
+   cin>>t;
+   while(t--)
+   {
+   	int n;
+   	cin>>n;
+   	int a[n];
+   	for(int i=0;i<n;i++)
+   	cin>>a[i];
+   	cout<<findMaxDiff(a,n)<<endl;
+   }
+    return 0;
+}
+
+
+// } Driver Code Ends
+/*You are required to complete this method */
+int findMaxDiff(int A[], int n)
+{
+  //Your code here
+  stack<int> s1,s2;
+  
+  int left[n],right[n];
+  for(int i=0;i<n;i++){
+      while(!s1.empty() && s1.top() >=A[i])
+        s1.pop();
+      left[i]=s1.empty()?0:s1.top();
+      s1.push(A[i]);
+  }
+  for(int i=n-1;i>=0;i--){
+      while(!s2.empty() && s2.top() >=A[i])
+        s2.pop();
+    right[i]=s2.empty()?0:s2.top();
+    s2.push(A[i]);
+  }
+  int diff[n];
+  int max=INT_MIN;
+  for(int i=0;i<n;i++){
+    diff[i]=abs(left[i]-right[i]);
+    if(diff[i]>max)
+        max=diff[i];
+  }
+  return max;
+}
